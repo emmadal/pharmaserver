@@ -1,0 +1,36 @@
+{
+  "name": "pharmaserver",
+  "version": "1.0.0",
+  "description": "A serverless GRAPHQL API",
+  "type": "commonjs",
+  "main": "handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon --exec sls offline",
+    "deploy": "serverless deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/emmadal/pharmaserver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/emmadal/pharmaserver/issues"
+  },
+  "homepage": "https://github.com/emmadal/pharmaserver#readme",
+  "dependencies": {
+    "@apollo/server": "^4.1.1",
+    "@as-integrations/aws-lambda": "^1.0.1",
+    "bcrypt": "^5.1.0",
+    "graphql": "^16.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "serverless-dotenv-plugin": "^4.0.2",
+    "serverless-offline": "^11.2.3"
+  }
+}
