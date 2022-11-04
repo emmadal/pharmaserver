@@ -31,12 +31,15 @@ type Pharmacy {
   tel: String!
   email: String
   address: Address!
-  employee: [DeliveryBoy]
-  order_received: [Order]
+  password: String!
+  doctor: [Doctor]
+  employees: [DeliveryBoy]
+  orders_received: [Order]
 }
 
 type Doctor {
   name: String!
+  password: String!
   tel: String!
   email: String
   pharmacy: Pharmacy!
@@ -47,7 +50,7 @@ type Address {
   city: String!
   state: String!
   town: String!
-  coordinate_gps: String!
+  coordinate_gps: [Float]!
   default: Boolean
 }
 

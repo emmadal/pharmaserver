@@ -5,7 +5,6 @@ const {
 } = require("@as-integrations/aws-lambda");
 
 const resolvers = require("./src/resolvers.js");
-console.log(process.env)
 
 const server = new ApolloServer({
   typeDefs: fs.readFileSync("./src/schema.graphql", { encoding: "utf-8" }),
