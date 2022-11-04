@@ -1,3 +1,70 @@
 type Query {
   hello: String
+  users: [User!]!
+  pharmacies: [Pharmacy!]!
+  orders: [Order!]!
+  pharmacy(name: String): Pharmacy!
+  delivery_boy(name: String): DeliveryBoy!
+}
+
+type User {
+  name: String!
+  tel: String!
+  email: String!
+  password: String!
+  address: [Address]
+  isActive: Boolean!
+  orders: [Order]
+}
+
+type DeliveryBoy {
+  name: String!
+  tel: String!
+  email: String!
+  password: String!
+  employer: Pharmacy
+  order_attributed: [Order]
+}
+
+type Pharmacy {
+  name: String!
+  tel: String!
+  email: String
+  address: Address!
+  employee: [DeliveryBoy]
+  order_received: [Order]
+}
+
+type Doctor {
+  name: String!
+  tel: String!
+  email: String
+  pharmacy: Pharmacy!
+}
+
+type Address {
+  country: String!
+  city: String!
+  state: String!
+  town: String!
+  coordinate_gps: String!
+  default: Boolean
+}
+
+type Order {
+  created_At: String
+  ordinance: [String]
+  others_ordinance: [String]
+  status: ORDER_STATUS!
+  pharmacy_sender: Pharmacy
+  delivery_boy: DeliveryBoy
+  receiver: User!
+}
+
+enum ORDER_STATUS {
+  ACCEPTED
+  CANCELLED
+  PENDING
+  DELIVERED
+  UNDELIVERED
 }
