@@ -107,7 +107,7 @@ const addressSchema = new Schema({
 });
 
 const Order = mongoose.model("Order", orderSchema);
-const User = mongoose.model("Order", userSchema);
+const User = mongoose.model("User", userSchema);
 const Pharmacy = mongoose.model("Pharmacy", pharmacySchema);
 const DeliveryBoy = mongoose.model("DeliveryBoy", deliveryBoySchema);
 const Doctor = mongoose.model("Doctor", doctorSchema);

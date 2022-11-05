@@ -1,32 +1,41 @@
+union RegisterUser = User | Doctor | DeliveryBoy
+union SearchResult = Doctor | DeliveryBoy
+
 type Query {
-  hello: String
   users: [User!]!
   pharmacies: [Pharmacy!]!
-  orders: [Order!]!
-  pharmacy(name: String): Pharmacy!
-  delivery_boy(name: String): DeliveryBoy!
+  orders: [Order]
+  employees: [DeliveryBoy!]!
+  doctors: [Doctor!]!
+  search(name: String!, pharmacyID: ID!): [SearchResult!]
 }
 
 type User {
+  id: ID!
   name: String!
   tel: String!
   email: String!
   password: String!
   address: [Address]
   isActive: Boolean!
+  token: String
   orders: [Order]
 }
 
 type DeliveryBoy {
+  id: ID!
   name: String!
   tel: String!
   email: String!
   password: String!
+  isActive: Boolean!
+  token: String
   employer: Pharmacy
   order_attributed: [Order]
 }
 
 type Pharmacy {
+  id: ID!
   name: String!
   tel: String!
   email: String
@@ -38,14 +47,18 @@ type Pharmacy {
 }
 
 type Doctor {
+  id: ID!
   name: String!
   password: String!
   tel: String!
-  email: String
+  email: String!
+  isActive: Boolean!
+  token: String
   pharmacy: Pharmacy!
 }
 
 type Address {
+  id: ID!
   country: String!
   city: String!
   state: String!
@@ -55,6 +68,7 @@ type Address {
 }
 
 type Order {
+  id: ID!
   created_At: String
   ordinance: [String]
   others_ordinance: [String]
@@ -70,4 +84,16 @@ enum ORDER_STATUS {
   PENDING
   DELIVERED
   UNDELIVERED
+}
+
+input UserInput {
+  name: String!
+  tel: String!
+  email: String!
+  password: String!
+  isActive: Boolean!
+}
+
+type Mutation {
+  register(input: UserInput!): RegisterUser!
 }
