@@ -95,5 +95,5 @@ input UserInput {
 }
 
 type Mutation {
-  register(input: UserInput!): RegisterUser!
+  register(input: UserInput!): User!
 }
